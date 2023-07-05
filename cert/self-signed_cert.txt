@@ -1,0 +1,12 @@
+openssl genrsa -out example.com.key 2048
+openssl req -new -key example.com.key -out example.com.csr
+// create v3.ext with content
+/*
+subjectKeyIdentifier   = hash
+authorityKeyIdentifier = keyid:always,issuer:always
+basicConstraints       = CA:TRUE
+keyUsage               = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment, keyAgreement, keyCertSign
+subjectAltName         = DNS:example.com, DNS:*.example.com
+issuerAltName          = issuer:copy
+*/
+openssl x509 -req -in example.com.csr -signkey example.com.key -out example.com.crt -days 3650 -sha256 -extfile v3.ext

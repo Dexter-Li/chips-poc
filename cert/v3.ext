@@ -1,0 +1,6 @@
+subjectKeyIdentifier   = hash
+authorityKeyIdentifier = keyid:always,issuer:always
+basicConstraints       = CA:TRUE
+keyUsage               = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment, keyAgreement, keyCertSign
+subjectAltName         = DNS:a.com, DNS:*.a.com, DNS:b.com, DNS:*.b.com, DNS:c.com, DNS:*.c.com
+issuerAltName          = issuer:copy
